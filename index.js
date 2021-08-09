@@ -3,7 +3,7 @@ const taskContainer = document.querySelector(".task_container");
 console.log(taskContainer);
 
 // Global Storage
-const globalstore = [];
+let globalstore = [];
 
 const newcard = ({
     id,
@@ -116,7 +116,6 @@ const savechanges = () => {
     // localStorage.setItem("keyname", storing object)
     // localStorage.setItem("tasky",JSON.stringify({ cards:globalstore }));
     updatelocalStorage();
-
 };
 
 // const deleteCard = (event) => {

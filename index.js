@@ -11,13 +11,13 @@ const newcard = ({
     taskTitle,
     taskType,
     taskDescription,
-}) => `<div class="col-md-6 col-lg-4 mt-3  id=${id}">
+}) => `<div class="col-md-6 col-lg-4 mt-3" id=${id}>
             <div class="card ">
                 <div class="card-header gap-2 d-flex justify-content-end">
                     <!-- <button type="button" class="btn btn-outline-primary px-3 rounded"><i class="fas fa-pencil-alt"></i></button> -->
                     <button type="button" class="btn btn-outline-primary"><i class="fas fa-pencil-alt"></i></button>
-                    <button type="button" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
-                    <!-- <button type="button" id=${id} class="btn btn-outline-danger px-3 rounded"><i class="fas fa-trash-alt"></i></button> -->
+                    <button type="button" id=${id} onclick="deleteCard.apply(this, arguments)" class="btn btn-outline-danger" ><i class="fas fa-trash-alt"></i></button>
+                    <!-- <button type="button" class="btn btn-outline-danger px-3 rounded"><i class="fas fa-trash-alt"></i></button> -->
                 </div>
                 <div class="card-body">
                     <div class="card mb-3">
@@ -65,7 +65,7 @@ const newcard = ({
 
 const loadInitialTaskCards = () => {
     // access localstorage
-    const getInitialData = localStorage.tasky;
+    const getInitialData = localStorage.getItem("tasky");
     if(!getInitialData) return;
 
     // convert stringified-object to object
@@ -94,9 +94,9 @@ const savechanges = () => {
         taskType : document.getElementById("tasktype").value,
         taskDescription : document.getElementById("taskdescription").value,
     };
-    // parent object browser -> window
-    // parent object html -> DOM -> document
-    //const {imageUrl} = taskData;
+                                        // parent object browser -> window
+                                        // parent object html -> DOM -> document
+                                        //const {imageUrl} = taskData;
     
     console.log(taskData);
 
@@ -112,24 +112,45 @@ const savechanges = () => {
     // Aplication programming Interface
     // local storage -> interface
 
-    // add to localstorage
-    // localStorage.setItem("keyname", storing object)
-    // localStorage.setItem("tasky",JSON.stringify({ cards:globalstore }));
+                                    // add to localstorage
+                                    // localStorage.setItem("keyname", storing object)
+                                    // localStorage.setItem("tasky",JSON.stringify({ cards:globalstore }));
     updatelocalStorage();
 };
 
-// const deleteCard = (event) => {
-    // id
+const deleteCard = (event) => {
+    //id
     event = window.event;
     const targetID = event.target.id;
+    const tagname = event.target.tagname;
+    console.log(tagname);
+
     //search the globalStore, remove the object which matches with the id
-    const newUpdatedArray = globalStore.filter(
+    const newUpdatedArray = globalstore.filter(
         (cardObject) => cardObject.id !== targetID
     );
     
+    newUpdatedArray.map(
+        (card) => {
+            const createNewCard = newcard(card);
+            taskContainer.insertAdjacentHTML("beforeend",createNewCard);
+        }
+    );
+
+    globalstore = newUpdatedArray;
     // loop over the new globalStore, and inject updated cards to DOM
 
-// }
+    // if(tagname === "BUTTON"){
+    //     return event.target.parentNode.parentNode.parentNode.parentNode.removeChild(
+    //         event.target.parentNode.parentNode.parentNode
+    //     );
+    // }
+
+    return event.target.parentNode.parentNode.parentNode.parentNode.removeChild(
+        event.target.parentNode.parentNode.parentNode
+    );
+
+}
 
 // Issues
 // The model was not closing upon adding new card.

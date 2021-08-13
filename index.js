@@ -16,7 +16,9 @@ const newcard = ({
                 <div class="card-header gap-2 d-flex justify-content-end">
                     <!-- <button type="button" class="btn btn-outline-primary px-3 rounded"><i class="fas fa-pencil-alt"></i></button> -->
                     <button type="button" class="btn btn-outline-primary"><i class="fas fa-pencil-alt"></i></button>
-                    <button type="button" id=${id} onclick="deleteCard.apply(this, arguments)" class="btn btn-outline-danger" ><i class="fas fa-trash-alt"></i></button>
+                    <button type="button" id=${id} onclick="deleteCard.apply(this, arguments)" class="btn btn-outline-danger" >
+                        <i id=${id} onclick="deleteCard.apply(this, arguments)" class="fas fa-trash-alt"></i>
+                    </button>
                     <!-- <button type="button" class="btn btn-outline-danger px-3 rounded"><i class="fas fa-trash-alt"></i></button> -->
                 </div>
                 <div class="card-body">
@@ -130,6 +132,7 @@ const deleteCard = (event) => {
         (cardObject) => cardObject.id !== targetID
     );
     
+    // loop over the new globalStore, and inject updated cards to DOM
     newUpdatedArray.map(
         (card) => {
             const createNewCard = newcard(card);
@@ -138,16 +141,17 @@ const deleteCard = (event) => {
     );
 
     globalstore = newUpdatedArray;
-    // loop over the new globalStore, and inject updated cards to DOM
 
-    // if(tagname === "BUTTON"){
-    //     return event.target.parentNode.parentNode.parentNode.parentNode.removeChild(
-    //         event.target.parentNode.parentNode.parentNode
-    //     );
-    // }
+    // updatelocalStorage();
+    
+    if(tagname === "BUTTON"){
+        return taskContainer.removeChild(
+            event.target.parentNode.parentNode.parentNode
+        );
+    }
 
-    return event.target.parentNode.parentNode.parentNode.parentNode.removeChild(
-        event.target.parentNode.parentNode.parentNode
+    return taskContainer.removeChild(
+        event.target.parentNode.parentNode.parentNode.parentNode
     );
 
 }

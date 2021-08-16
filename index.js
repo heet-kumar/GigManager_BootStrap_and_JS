@@ -124,7 +124,7 @@ const deleteCard = (event) => {
     //id
     event = window.event;
     const targetID = event.target.id;
-    const tagname = event.target.tagname;
+    const tagname = event.target.tagName;
     console.log(tagname);
 
     //search the globalStore, remove the object which matches with the id

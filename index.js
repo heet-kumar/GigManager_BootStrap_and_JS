@@ -142,7 +142,7 @@ const deleteCard = (event) => {
 
     globalstore = newUpdatedArray;
 
-    // updatelocalStorage();
+    updatelocalStorage();
     
     if(tagname === "BUTTON"){
         return taskContainer.removeChild(
@@ -157,7 +157,7 @@ const deleteCard = (event) => {
 }
 
 // Issues
-// The model was not closing upon adding new card.
+// The model was not closing upon adding new card. [solved]
 // The cards were deleted after refresh -> localstorage (5MB)
 
 // Features

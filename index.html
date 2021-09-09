@@ -23,29 +23,51 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
+          <div class="modal-header"> <!-- model header -->
             <h5 class="modal-title" id="exampleModalLabel">Add New Task </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button 
+              type="button" 
+              class="btn-close" 
+              data-bs-dismiss="modal" 
+              aria-label="Close">
+            </button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body"> <!-- model body -->
             <div class="mb-3">
               <label for="imageUrl" class="form-label">Image Url</label>
-              <input type="url" placeholder="https://images.hello.com/hello.jpg" class="form-control" id="imageUrl">
+              <input 
+                type="url" 
+                placeholder="https://images.hello.com/hello.jpg" 
+                class="form-control" 
+                id="imageUrl">
             </div>
             <div class="mb-3">
               <label for="tasktitle" class="form-label">Task Title</label>
-              <input type="text" placeholder="API Integration" class="form-control" id="tasktitle">
+              <input 
+                type="text" 
+                placeholder="API Integration" 
+                class="form-control" 
+                id="tasktitle">
             </div>
             <div class="mb-3">
               <label for="tasktype" class="form-label">Task Type</label>
-              <input type="text" placeholder="Development" class="form-control" id="tasktype">
+              <input 
+                type="text" 
+                placeholder="Development" 
+                class="form-control" 
+                id="tasktype">
             </div>
             <div class="mb-3">
               <label for="taskdescription" class="form-label">Task Description</label>
-              <textarea class="form-control" rows="4" placeholder="Description of the Picture" id="taskdescription"></textarea>
+              <textarea 
+                class="form-control" 
+                rows="4" 
+                placeholder="Description of the Picture" 
+                id="taskdescription">
+              </textarea>
             </div>
           </div>
-          <div class="modal-footer justify-content-end">
+          <div class="modal-footer justify-content-end"> <!-- modal footer -->
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="savechanges()">Save changes</button>
           </div>

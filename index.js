@@ -12,28 +12,23 @@ const newcard = ({
     taskType,
     taskDescription,
 }) => `<div class="col-md-6 col-lg-4 mt-3" id=${id}>
-            <div class="card ">
+            <div class="card mb-3 ">
                 <div class="card-header gap-2 d-flex justify-content-end">
-                    <!-- <button type="button" class="btn btn-outline-primary px-3 rounded"><i class="fas fa-pencil-alt"></i></button> -->
-                    <button type="button" class="btn btn-outline-primary"><i class="fas fa-pencil-alt"></i></button>
+                                                <!-- <button type="button" class="btn btn-outline-primary px-3 rounded"><i class="fas fa-pencil-alt"></i></button> -->
+                    <button type="button" id=${id} onclick="cardedit.apply(this, arguments)" class="btn btn-outline-primary">
+                        <i id=${id} onclick="cardedit.apply(this, arguments)" class="fas fa-pencil-alt"></i>
+                    </button>
                     <button type="button" id=${id} onclick="deleteCard.apply(this, arguments)" class="btn btn-outline-danger" >
                         <i id=${id} onclick="deleteCard.apply(this, arguments)" class="fas fa-trash-alt"></i>
                     </button>
-                    <!-- <button type="button" class="btn btn-outline-danger px-3 rounded"><i class="fas fa-trash-alt"></i></button> -->
+                                                <!-- <button type="button" class="btn btn-outline-danger px-3 rounded"><i class="fas fa-trash-alt"></i></button> -->
                 </div>
+                <img 
+                    src=${imageUrl}
+                    class="card-img-top rounded-10" 
+                    alt="User Image"
+                >
                 <div class="card-body">
-                    <div class="card mb-3">
-                        <img 
-                            src=${imageUrl}
-                            class="card-img-top rounded-10" 
-                            alt="User Image"
-                        >
-                        <!-- <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div> -->
-                    </div>
                     <h5 class="card-title">${taskTitle}</h5>
                     <p class="card-text">${taskDescription}</p>
                     <a href="#" class="btn btn-primary px-3 py-1 rounded-1">${taskType}</a>
@@ -153,6 +148,38 @@ const deleteCard = (event) => {
     return taskContainer.removeChild(
         event.target.parentNode.parentNode.parentNode.parentNode
     );
+
+}
+
+const cardedit = (event) => {
+    event = window.event;
+    const targetID = event.target.id;
+    const tagName = event.target.tagName;
+
+    console.log(event);
+    console.log(targetID);
+    console.log("Tag name",tagName);
+
+    if (tagName === 'BUTTON'){
+        parentElement = event.target.parentNode.parentNode;
+    }
+    else{
+        parentElement = event.target.parentNode.parentNode.parentNode;
+    }
+
+    //console.log(parentElement);
+
+    let taskTitle = parentElement.childNodes[5].childNodes[1];
+    let taskDescription = parentElement.childNodes[5].childNodes[3];
+    let taskType = parentElement.childNodes[5].childNodes[5];
+    
+    console.log("Task Title : ",taskTitle);
+    console.log("Task Decription : ",taskDescription);
+    console.log("Task Type : ",taskType);
+
+    taskTitle.setAttribute("contenteditable","true");
+    taskDescription.setAttribute("contenteditable","true");
+    taskType.setAttribute("contenteditable","true");
 
 }
 

@@ -35,7 +35,7 @@ const newcard = ({
                 </div>
                 <div class="card-footer text-muted">
                     <!-- <button type="button" class="btn btn-outline-primary rounded-pill float-end">Open Task</button> -->
-                    <button type="button" class="btn btn-outline-primary float-end">Open Task</button>
+                    <button type="button" id=${id} class="btn btn-outline-primary float-end">Open Task</button>
                 </div>
             </div>
         </div>
@@ -160,6 +160,8 @@ const cardedit = (event) => {
     console.log(targetID);
     console.log("Tag name",tagName);
 
+    let parentElement;
+
     if (tagName === 'BUTTON'){
         parentElement = event.target.parentNode.parentNode;
     }
@@ -172,16 +174,64 @@ const cardedit = (event) => {
     let taskTitle = parentElement.childNodes[5].childNodes[1];
     let taskDescription = parentElement.childNodes[5].childNodes[3];
     let taskType = parentElement.childNodes[5].childNodes[5];
-    
+    let saveButton = parentElement.childNodes[7].childNodes[3];
+
     console.log("Task Title : ",taskTitle);
     console.log("Task Decription : ",taskDescription);
     console.log("Task Type : ",taskType);
+    console.log("Save Button : ",saveButton);
 
     taskTitle.setAttribute("contenteditable","true");
     taskDescription.setAttribute("contenteditable","true");
     taskType.setAttribute("contenteditable","true");
+    saveButton.setAttribute("onclick","saveEditChanges.apply(this,arguments)");
+    saveButton.innerHTML = "Save Changes";               // for changing the inner value of the tag
 
 }
+
+// const saveEditChanges = (event) =>{
+
+//     event = window.event;
+//     const targetID = event.target.id;
+//     const tagName = event.target.tagName;
+
+//     console.log("Target Id : ",targetID);
+//     console.log("Tag Name : ",tagName);
+
+//     let parentElement;
+
+//     if (tagName === 'BUTTON'){
+//         parentElement = event.target.parentNode.parentNode;
+//     }
+//     else{
+//         parentElement = event.target.parentNode.parentNode.parentNode;
+//     }
+
+//     //console.log(parentElement);
+
+//     let taskTitle = parentElement.childNodes[5].childNodes[1];
+//     let taskDescription = parentElement.childNodes[5].childNodes[3];
+//     let taskType = parentElement.childNodes[5].childNodes[5];
+//     let saveButton = parentElement.childNodes[7].childNodes[3];
+
+//     const updatedData = {
+//         taskTitle: taskTitle.innerHTML,
+//         taskType: taskType.innerHTML,
+//         taskDescription: taskDescription.innerHTML,
+//     };
+
+//     globalstore = globalstore.map(
+//         (task) => {
+//             if(task.id === targetID){
+//                 return(
+//                     id: task.id;
+//                     imageUrl: task.imageUrl;
+//                     taskType:
+//                 );
+//             }
+//         }
+//     );
+// }
 
 // Issues
 // The model was not closing upon adding new card. [solved]

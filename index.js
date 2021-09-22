@@ -238,6 +238,12 @@ const saveEditChanges = (event) =>{
     console.log(globalstore);
     updatelocalStorage();
 
+    taskTitle.setAttribute("contenteditable","false");
+    taskDescription.setAttribute("contenteditable","false");
+    taskType.setAttribute("contenteditable","false");
+    saveButton.removeAttribute("onclick");
+    saveButton.innerHTML = "Open Task";
+
 }
 
 // Issues

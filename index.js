@@ -189,49 +189,56 @@ const cardedit = (event) => {
 
 }
 
-// const saveEditChanges = (event) =>{
+const saveEditChanges = (event) =>{
 
-//     event = window.event;
-//     const targetID = event.target.id;
-//     const tagName = event.target.tagName;
+    event = window.event;
+    const targetID = event.target.id;
+    const tagName = event.target.tagName;
 
-//     console.log("Target Id : ",targetID);
-//     console.log("Tag Name : ",tagName);
+    console.log("Target Id : ",targetID);
+    console.log("Tag Name : ",tagName);
 
-//     let parentElement;
+    let parentElement;
 
-//     if (tagName === 'BUTTON'){
-//         parentElement = event.target.parentNode.parentNode;
-//     }
-//     else{
-//         parentElement = event.target.parentNode.parentNode.parentNode;
-//     }
+    if (tagName === 'BUTTON'){
+        parentElement = event.target.parentNode.parentNode;
+    }
+    else{
+        parentElement = event.target.parentNode.parentNode.parentNode;
+    }
 
-//     //console.log(parentElement);
+    //console.log(parentElement);
 
-//     let taskTitle = parentElement.childNodes[5].childNodes[1];
-//     let taskDescription = parentElement.childNodes[5].childNodes[3];
-//     let taskType = parentElement.childNodes[5].childNodes[5];
-//     let saveButton = parentElement.childNodes[7].childNodes[3];
+    let taskTitle = parentElement.childNodes[5].childNodes[1];
+    let taskDescription = parentElement.childNodes[5].childNodes[3];
+    let taskType = parentElement.childNodes[5].childNodes[5];
+    let saveButton = parentElement.childNodes[7].childNodes[3];
 
-//     const updatedData = {
-//         taskTitle: taskTitle.innerHTML,
-//         taskType: taskType.innerHTML,
-//         taskDescription: taskDescription.innerHTML,
-//     };
+    const updatedData = {
+        taskTitle: taskTitle.innerHTML,
+        taskType: taskType.innerHTML,
+        taskDescription: taskDescription.innerHTML,
+    };
 
-//     globalstore = globalstore.map(
-//         (task) => {
-//             if(task.id === targetID){
-//                 return(
-//                     id: task.id;
-//                     imageUrl: task.imageUrl;
-//                     taskType:
-//                 );
-//             }
-//         }
-//     );
-// }
+    globalstore = globalstore.map(
+        (task) => {
+            if(task.id === targetID){
+                return {
+                    id: task.id,
+                    imageUrl: task.imageUrl,
+                    taskType: updatedData.taskType,
+                    taskTitle: updatedData.taskTitle,
+                    taskDescription: updatedData.taskDescription,
+                };
+            }
+            return task;
+        }
+    );
+
+    console.log(globalstore);
+    updatelocalStorage();
+
+}
 
 // Issues
 // The model was not closing upon adding new card. [solved]

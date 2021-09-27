@@ -12,7 +12,7 @@ Task is to store the image, title and Description as a input from the user and s
 2. BootStrap
 3. JavaScript
 
-## Link of the Project :
+## Link of the hosted Project :
 [GIG Manager](https://heet-kumar.github.io/GigManager_BootStrap_and_JS/index.html)
 
 ## Project work image :

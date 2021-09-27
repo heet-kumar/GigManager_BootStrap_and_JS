@@ -5,7 +5,7 @@ Task is to store the image, title and Description as a input from the user and s
 
 ## Features :
 1. This displayed Details can be updated anytime.
-2. It is compatable to all the mode like Mobile, Tablet and PC.
+2. It is compatible to all the mode like Mobile, Tablet and PC.
 
 ## Tech Skills used :
 1. HTML
@@ -15,5 +15,5 @@ Task is to store the image, title and Description as a input from the user and s
 ## Link of the hosted Project :
 [GIG Manager](https://heet-kumar.github.io/GigManager_BootStrap_and_JS/index.html)
 
-## Project work image :
+## Project Screenshots :
 ![Frontend image](https://user-images.githubusercontent.com/78725162/134893661-391d5bcb-fa6c-416e-b3ff-9dbfdcf82bab.png)

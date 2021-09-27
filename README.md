@@ -14,3 +14,6 @@ Task is to store the image, title and Description as a input from the user and s
 
 ## Link of the Project :
 [GIG Manager](https://heet-kumar.github.io/GigManager_BootStrap_and_JS/index.html)
+
+## Project work image :
+![Frontend image](https://user-images.githubusercontent.com/78725162/134893661-391d5bcb-fa6c-416e-b3ff-9dbfdcf82bab.png)
